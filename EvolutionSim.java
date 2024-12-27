@@ -106,6 +106,8 @@ class EvolutionSim{
                Random rand = new Random();
                int randx = rand.nextInt(3) - 1;
                int randy = rand.nextInt(3) - 1;
+               int randombiasx = rand.nextInt(3);
+               int randombiasy = rand.nextInt(3);
                if(randx == 0 && randy == 0){
                   matt.food = matt.food - 1;
                   break;
@@ -121,7 +123,7 @@ class EvolutionSim{
                   break;
                }
                int randHealth = rand.nextInt((matt.health - 10), (matt.health + 10));//acedentail mutation SUPERMITES!!!
-               mite mason = new mite((matt.name + " a"), randHealth, (matt.x + randx), (matt.y + randy), matt.biasx, matt.biasy);
+               mite mason = new mite((matt.name + " a"), randHealth, (matt.x + randx), (matt.y + randy), (((matt.biasx + randombiasx) > 1) ? 1 : ((matt.biasx + randombiasx) < -1) ? -1 : (matt.biasx + randombiasx)), (((matt.biasy + randombiasy) > 1) ? 1 : ((matt.biasy + randombiasy) < -1) ? -1 : (matt.biasy + randombiasy)));
                matt.health = 100;
                arr2.add(mason);
                matt.food = matt.food - 1;
